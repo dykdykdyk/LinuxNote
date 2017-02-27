@@ -1,0 +1,14 @@
+用户名：ddcoo 密码:12345678
+
+
+
+
+ls 列出当前目录下的所有文件
+su root 获取root权限
+touch 1.c 创建文件
+
+gedit 1.c 编辑1.c文件
+
+gcc 1.c 编译1.c文件
+ ./a.out 调试1.c文件
+

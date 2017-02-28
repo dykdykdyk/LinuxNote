@@ -1,11 +1,8 @@
 用户名：ddcoo 密码:12345678
 
-
-
-
-ls 列出当前目录下的所有文件
+clear \ Ctrl+l(小写L) 清屏命令
 su root 获取root权限
-touch 1.c 创建文件
+
 
 rm -rf 1.c 强制删除目录
 gedit 1.c 编辑1.c文件
@@ -32,8 +29,126 @@ u返回上一次的操作
 末行模式（英文模式输入下才有用）
 ：q  结束VI程序，如果文件有过修改，先保存文件。
 ：q! 强制退出VI程序
-：wq 保存修改并退出程序
+：wq  ：x  保存修改并退出程序
 :set nu 设置行号 
 
 简单操作
-vi 1.c 
+vi myfile 创建文件myfile
+
+Linux 常见命令：
+
+1.文件和目录操作命令
+pwd 显示当前目录
+cd .. 返回上一层
+cd .当前目录
+cd ~ 当前用户的 home directory 
+
+ls -a 显示所有文件及目录
+ls -ltr s* 列出当前工作目录下所有名称以S开头的文件
+并且以创建时间的先后顺序排列
+ls -AF 可执行文件加*，目录加/
+
+mkdir deng 创建目录deng
+mkdir -p deng/test2/test3 自动创建路径
+
+rmdir dengyangkang 删除空目录
+rmdir -p deng/test2/test3 如果删除子目录的操作使
+改目录页成为空目录，则顺便一并删除。
+
+cp test1 test2 拷贝文件test1并命名为test2 
+cp -r dir1 dir2 （dir2目录不存在，直接复制dir1到dir2）
+cp -r dir1/. dir2 (dir2目录存在，直接复制dir1到dir2)
+cp *.c test3 将当前目录下的所有.c文件复制test3目录里
+
+mv test1 test3 将test1更名为test3
+mv -i *.c test3 将所有C语言的程序移动到test3子目录中
+
+touch 1.c 创建文件
+touch -c -t 022814042018 test 将test时间修改为
+2018年2月28号14:05分。
+
+rm -r test3 删除目录test3里面包含的所有文件
+rm -f *.c 删除目录里面的C语言文件 不需要确认
+
+2.查找类命令
+grep \'test\' d* 显示所有以d开头的文件中包含的test行
+grep \'[a-z]{5}\' aa 显示aa文件中所有包含至少
+有5个连续小写字符的字符串的行
+
+find . -name "*.c"找到当前目录下的所有C语言的文件
+find . -type f 将当前目录及其子目录中所有一般文件列出来
+
+locate 1.c 寻找所有命名为1.c的文件
+locate -n 90 *.c 寻找所有C文件，最多只显示90个
+
+whereis cat 查找cat的执行文件，手册页文件及源代码所在位置
+whereis -s ls 查找ls源代码所在位置
+
+whatis ls 查看一条命令的简单说明
+
+which -n 64k *.c 显示长为64k的C文件
+
+
+3.文本的命令
+cat -n as >sasa 把as的文件内容加上行号后输入到sasa文件里
+cat -b as sasa >>test 把as sasa的文件内容加上行号后输
+入到test文件里
+
+more -s test 逐页显示test文本内容
+more +3 test 从第3行开始显示test文本内容
+
+head -n 5 test 显示test文本的前5行内容
+
+tail -n 15 test 显示test文本的后15行
+
+diff usr/test test 将两个test文本内容进行比较
+
+4.其他命令
+
+echo -n hello,world 输出字符串
+
+uname -o 显示操作系统
+uname-i 显示硬件平台
+uname-v 显示操作系统的版本
+
+hostname -i 显示主机ip地址
+
+cal -m  以星期一为每周的第一天显示本月的日历
+last -num 显示前num个登录
+
+#rpm -ivh test.rpm 安装软件
+#rpm -ivh *.rpm 批量安装
+
+file test 查看test文件的文件类型
+
+#tar -cvf temp/etc.tar /etc 将/etc
+目录下的文件打包成etc.tar 
+
+tar -xf all.tar 解压all.tar包
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

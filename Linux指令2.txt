@@ -1,0 +1,53 @@
+ls 查看当前目录下的所有文件
+ls -l显示文件的详细信息
+ls- ls 文件的大小  创建时间
+
+sudo -s 将用户权限变成root权限
+
+pwd 显示当前目录的位置
+
+cd 改变当前工作的目录 /表示根目录
+cd ~ 家目录
+ctrl+l   clear  清屏 
+wc -l 1.c 查看文件的行数 1.c表示文件
+vim 1.c 打开文件看文件内容
+set nu显示行数
+wq 退出
+wc -l *.x  表示查看当前目录下的所有.c
+文件的行数
+cd..返回上一级目录
+
+find . -name yang.txt  找文件
+cat 1.c 显示文件内容
+echo "yangyang" 显示打印的字符串
+ps  显示当前的进程
+rm  删除文件 
+rmdir 只能删除空目录
+touch 1.c 创建文件
+rm -rf 1.c 强制删除文件 不可恢复
+file lib 显示文件类型
+cp 拷贝命令
+cp yang.txt media/ 将yang.txt文件拷贝到media目录下
+mv yang.txt media/ 移动文件到media目录
+mv yang.txt yang 更改当前文件名
+fdisk 显示当前系统的硬盘信息
+fdisk 显示当前系统的详细信息
+df -h 显示当前挂载的文件
+mkdir yang 创建目录yang
+halt 关机命令 ~c 表示取消
+reboot 重启命令
+init 0 关机命令
+
+
+
+
+vim操作
+
+推出当前正在编译的环境
+esc shift+: wq！
+按住小写的i,就可以进入插入模式 （编译模式）
+./a.out 编译
+yy 复制行
+pp 粘贴
+
+/main 自动跳转到main字符串

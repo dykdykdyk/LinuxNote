@@ -7,8 +7,33 @@ ls 列出当前目录下的所有文件
 su root 获取root权限
 touch 1.c 创建文件
 
+rm -rf 1.c 强制删除目录
 gedit 1.c 编辑1.c文件
 
 gcc 1.c 编译1.c文件
  ./a.out 调试1.c文件
 
+重启：reboot 或shutdown -r now 
+关机：poweroff 或 shutdown-h now 
+
+man ls 获取帮助命令
+q 即可退出
+
+VI编辑器：
+指令模式下 输入a,i,o进入文本输入模式。
+文本输入模式按下Esc键进入指令模式
+指令模式下输入:进入末行模式
+指令模式：
+dd 删除整行 pp整行复制 
+s 删除字符
+
+u返回上一次的操作
+
+末行模式（英文模式输入下才有用）
+：q  结束VI程序，如果文件有过修改，先保存文件。
+：q! 强制退出VI程序
+：wq 保存修改并退出程序
+:set nu 设置行号 
+
+简单操作
+vi 1.c 

@@ -11,7 +11,7 @@ gcc 1.c 编译1.c文件
  ./a.out 调试1.c文件
 
 重启：reboot 或shutdown -r now 
-关机：poweroff 或 shutdown-h now 
+关机：poweroff 或 shutdown-h now   / halt /init 0
 
 man ls 获取帮助命令
 q 即可退出
@@ -92,6 +92,7 @@ which -n 64k *.c 显示长为64k的C文件
 3.文本的命令
 cat -n as >sasa 把as的文件内容加上行号后输入到sasa文件里
 cat -b as sasa >>test 把as sasa的文件内容加上行号后输
+cat 1.c 显示文件内容
 入到test文件里
 
 more -s test 逐页显示test文本内容
@@ -111,6 +112,8 @@ uname -o 显示操作系统
 uname-i 显示硬件平台
 uname-v 显示操作系统的版本
 
+bc 计算器模式 后面可以直接输入运算公式10^2  quit退出
+
 hostname -i 显示主机ip地址
 
 cal -m  以星期一为每周的第一天显示本月的日历
@@ -126,12 +129,18 @@ file test 查看test文件的文件类型
 
 tar -xf all.tar 解压all.tar包
 
+alias lm ='ls-al' 设置命令别名
 
+shell scripts 程序化脚本
+bash 进入到所谓的子程序
+显示变量PATH  echo $PATH /echo ${PATH}
+ PATH =VBird 
+echo $PATH  就可以显示VBird了。
+unset PATH  取消PATH这个变量内容
 
-
-
-
-
+进入到目前核心的模块目录
+在root目录下 cd /lib/modules/'uname -r'/kernel
+   	     cd /lib/modules/$(uname -r)/kernel
 
 
 

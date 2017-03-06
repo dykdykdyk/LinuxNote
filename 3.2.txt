@@ -1,0 +1,39 @@
+su - root 因为su是只取得ROOT的权限
+su - 是取得ROOT的权限后还执行ROOT的PROFILE
+来取得ROOT的环境变量。
+
+添加用户命令：
+
+adduser dyk 报错
+需要在root根目录下 编辑
+vi .bash_profile 文件将PATH改为
+PATH=$PATH:/bin:/usr/sbin 保存注销重新登陆
+就可以了。
+passwd dyk 添加密码
+su - dyk 
+切换用户
+pwd （查看当前目录）
+
+ps -ef 查看当前所有进程
+kill 7421 杀死进程
+
+fdisk -l 查看当前系统磁盘分区情况
+
+mount -t vfat /dev/hda1 /mnt/c 挂载文件系统
+
+umount /mnt/c 将其卸载
+
+修改文件权限
+chomd a+rx,u+w 1.c 
+所有的用户 添加读和执行权限，文件拥有者添加写入权限
+-rw-r--r--
+-rwxr-xr-x
+
+ln -s ../dyk/2,c  . 为某一个文件在另外一个位置创建
+一个符号链接。 最后面的一个.为当前路径
+
+ifconfig 配置网络
+ifconfig eth0 192.168.1.7 netmask 255.255.255.0
+配置 eth0的ip地址 和网关
+
+

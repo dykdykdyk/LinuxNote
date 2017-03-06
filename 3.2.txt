@@ -36,4 +36,48 @@ ifconfig 配置网络
 ifconfig eth0 192.168.1.7 netmask 255.255.255.0
 配置 eth0的ip地址 和网关
 
+ftp命令
+ftp +站点
+name (站点):用户名
+password:
+dir 列出目录  bin更改登录模式 bye 退出ftp程序
+
+Linux系统启动分析
+ init过程 配置文件在etc/inittab下
+ id:5:initdefault: 系统能够正常启动 3 或者 5(X-Windows多用户模式)
+
+Linux 系统服务 
+  init进程的一个重要作用就是启动Linux系统服务（也就是运行在后台的守护进程） 
+ 1.独立运行的服务
+    启动脚本/etc/rc.d/init.d/  
+    系统中不同运行级别都有不同的脚本文件/etc/rc.d/rcN.d
+   操作命令 service+系统服务+操作 
+   例：service sshd  off 
+   设置3 5 级别开启
+   chkconfig --level 35 sshd on
+   查看设置是否正确
+   chkconfig --list sshd  
+       
+   
+ 2.xinetd 设定的服务 管理系统中不经常使用的服务，只有在请求的时候
+   才会启动，一旦运行完毕服务自动结束。
+   /etc/xinetd.d 
+  设定服务命令常用方法
+     chkconfig --list 
+    对指定级别指定系统服务  chkconfig  --level 3 ntpd on/off
+   例子：修改ftp服务端口号
+   vi /etc/vsftpd/vsftpd.conf  添加此行：listen_port=811
+   vi /etc/services 将其中的
+     ftp 21/tcp 改为 ftp 811/tcp 
+     ftp 21/udp 改为 ftp 811/tcp
+修改环境变量 export PATH=/usr/local/arm/3.3.2/bin:$PATH
+查看路径是否正确 echo $PATH 
+
+
+   
+
+
+
+
+
 

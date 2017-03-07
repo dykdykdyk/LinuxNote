@@ -16,7 +16,7 @@ Emacs编译器
   M-Delete 剪切光标前面的单词
   M-d 剪切光标后面的单词
   C-k 剪切从光标位置到行尾的内容
-  M-k 剪切从光标位置到句尾的北荣
+  M-k 剪切从光标位置到句尾的内容
   C-y 粘贴缓冲区内容
   C-x u  先C-x,再u 撤销操作
   复制文本
@@ -45,9 +45,10 @@ GCC 编译器
      4.链接阶段
        函数库：
      Gcc 1.o -o hello 
-  运行该文件  ./hello
 
-  普通情况下 就是这种 gcc 1.c   ./a.out 
+     运行该文件  ./hello 
+ 
+     普通情况下 就是这种 gcc 1.c   ./a.out 
       
 GGC编译选项分析
   -I dir 在头文件的搜索路径列表中添加dir目录
@@ -106,24 +107,83 @@ Gdb基本命令
       在单步执行的过程中，键入命令 “set 变量=设定值”，
      b 7   r   set n=4  c 
   
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Make工程管理器
+   1.Makefile基本结构
+       1.由make工具创建的目标体（target）
+       2.目标体所依赖的文件(dependency_file)
+       3.创建目标体所需要的命令(command)
+     格式：
+    target: dependency_file
+         command 
+     例：首先创建一个Makefile文件，下入以下内容：
+     注意：Makefile中每一个command前面必须要有一个"tab"制表符
+     hello.o:hello.c hello.h
+         gcc -c hello.c -o hello.o
+     之后直接用 make hello.o 就可以自动生成hello.o文件
+   2.Makefile变量
+      基本格式：$(VAR)
+      OBJS =kang.o yul.o 自定义变量
+      CC  = Gcc          预定义变量
+      CFLAGS = -Wall -O -g  预定义变量
+      sunq:$(OBJS)
+          $(CC) $(CFLAGS) -c kang.c -o kang.o 
+      kang.o :kang.c kang.h
+          $(CC) $(CFLAGS) -c kang.c -o kang.o
+     基本类型：用户自定义变量、预定义变量，自动变量及环境变量。
+       常见预定义变量
+      CC   C编译器的名称：默认值为cc
+      CFLAGS  C编译器的选项，无默认值
+     自动变量
+        $< 第一个依赖文件的名称
+        $@ 目标文件的完整名称
+        $^ 所有不重复的依赖文件，以空格分开 
+      sunq:$(OBJS)
+          $(CC) $^ -o $@ 
+       kang.o :kang.c kang.h
+          $(CC) $(CFLAGS) -c $^ -o $@ 
+    3.Makefile规则
+      1.隐式规则 
+        sunq:$(OBJS)
+          $(CC) $^ -o $@ 
+        C编译：.c变为.o
+      2.模式规则(相关文件前必须用"%"注明)
+        sunq:$(OBJS)
+          $(CC) $^ -o $@ 
+       %.o : %.c
+          $(CC) $(CFLAGS) -c $^ -o $@ 
+     4.Make管理器的使用
+3.7 使用autotools
+    1.autoscan (会自动生成configure.scan文件，configure.scan文件)
+      修改configure.scan文件，参照 http://blog.csdn.net/zhoudaxia/article/details/4361194
+    并重命名为 configure.ac  
+    
+     注意：书中AM_INIT_AUTOMAKE(mytool,0.1)  
+       而不是AC_INIT_AUTOMAKE(mytool,0.1)  
+    
+    2.autoconf 
+       首先运行aclocal,生成一个aclocal.m4文件，主要处理本地宏定义。
+       再运行autoconf，生成configure可执行文件 还有aclocal.m4，autom4te.cache
+    3.autoheader
+       负责生成config.h.in文件。
+    4.automake 
+         自己创建Makefile.am文件，加入以下内容
+         AUTOMAKE_OPTIONS=foreign 设置软件等级，foreign
+         bin_PROGRAMS= hello    定义要产生的文件名
+         hello_SOURCES= hello.c 定义|"hello"这个执行程序所需要的原始文件。
+       automake --add-missing 
+        如果上面命令报错：automake requires `AM_CONFIG_HEADER', not `AC_CONFIG_HEADER
+    是automake版本问题，讲AC_CONFIG_HEADER([config.h])”修改为“AM_CONFIG_HEADER([config.h])”
+   5.运行configure,
+        ./configure
+   
+  使用autotools所生成的Makefile
+    1.直接make 会自动生成 hello文件 ./hello 调试就可以出来了
+    2.make install 
+      会直接把程序按照到系统目录中去，结果是 直接敲hello 也会出来程序打印信息。
+    3.make clean 
+      会清除之前编译的可执行文件及目标文件
+    4.make dist
+      将程序和相关文档打包一个压缩文档发布
 
 
 

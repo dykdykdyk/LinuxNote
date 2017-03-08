@@ -170,6 +170,8 @@ Make工程管理器
          AUTOMAKE_OPTIONS=foreign 设置软件等级，foreign
          bin_PROGRAMS= hello    定义要产生的文件名
          hello_SOURCES= hello.c 定义|"hello"这个执行程序所需要的原始文件。
+     注意：如果有必须要的源文件 hello.h   
+          hello_SOURCES= hello.c  hello.h (后面必须加进来)
        automake --add-missing 
         如果上面命令报错：automake requires `AM_CONFIG_HEADER', not `AC_CONFIG_HEADER
     是automake版本问题，讲AC_CONFIG_HEADER([config.h])”修改为“AM_CONFIG_HEADER([config.h])”
@@ -185,7 +187,15 @@ Make工程管理器
     4.make dist
       将程序和相关文档打包一个压缩文档发布
 
-
+安装软件 
+   压缩 make dist 
+   解压 tar-zxvf hello-1.0.tar.gz
+   进入压缩文件 
+   ./configure
+   make 
+   ./hello
+   make install 
+   hello 
 
 
 
